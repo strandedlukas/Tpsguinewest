@@ -1,6 +1,6 @@
 local whitelist = {
     ["SIPAPIBACKUPALTEZ"] = true,
-    ["Player2Name"] = true,
+    ["Zikel100"] = true,
     -- Add more player names as needed
 }
 
