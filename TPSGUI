@@ -1,0 +1,125 @@
+local whitelist = {
+    ["SIPAPIBACKUPALTEZ"] = true,
+    ["Player2Name"] = true,
+    -- Add more player names as needed
+}
+
+-- Function to check and kick non-whitelisted players
+local function checkAndKick(player)
+    if not whitelist[player.Name] then
+        player:Kick("You are not whitelisted, contact us to get whitelisted.")
+    end
+end
+
+-- Check and kick non-whitelisted players when a new player joins
+game.Players.PlayerAdded:Connect(checkAndKick)
+
+-- Check and kick all players who are already in the game
+for _, player in ipairs(game.Players:GetPlayers()) do
+    checkAndKick(player)
+end
+
+
+-- this script was made by lukas
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create TextLabel for message
+local messageLabel = Instance.new("TextLabel")
+messageLabel.Text = "Checking for whitelist, please wait as the loader loads.."
+messageLabel.Size = UDim2.new(0, 300, 0, 50)
+messageLabel.Position = UDim2.new(0.5, -150, 0.5, -25)
+messageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+messageLabel.Parent = screenGui
+
+-- Simulate loading process
+wait(3) -- Placeholder for loading process
+
+-- Hide ScreenGui after 5 seconds
+wait(5)
+screenGui:Destroy()
+
+-- Once loading is complete, show notification
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Whitelisted",
+    Text = "Join the discord lil boy",
+    Icon = "",
+    Duration = 10,
+    Button1 = "Yes",
+    Button2 = "Yes",
+    Callback = function()
+        -- Add your code here for what happens when the user clicks on the notification
+    end
+})
+
+-- Hide notification after 10 seconds
+wait(10)
+game.StarterGui:SetCore("SendNotification", {
+    Title = "",
+    Text = "",
+    Icon = "",
+    Duration = 0,
+    Button1 = "",
+    Button2 = "",
+    Callback = function()
+        -- Add your code here for any cleanup or additional actions
+    end
+})
+
+_G.Settings = {
+	UI = {
+		Key = Enum.KeyCode.RightControl,
+	}
+}
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SixZensED/Discord-Library/main/Library"))()
+
+local main = Library:create({
+	Name = "Nova script Gui picker by Lukas"
+})
+
+local Maintab = main:createtab({
+	Name = "Main"
+})
+
+local section = Maintab:createsection({
+Name = "Scripts"
+})
+
+local page = section:createpage()
+
+page:Button({
+	Title = "Novas Free reach By Lukas",
+	Mode = "Defualt",
+	AutoSize = true,
+loadstring(game:HttpGet("https://raw.githubusercontent.com/strandedlukas/Tpsguiscript/main/Tps%20gui"))();
+  -- Theme Mode {"Defualt","Delete","Delete Fill"}
+})
+
+page:Button({
+	Title = "Nova Normal Script Loader",
+	Mode = "Defualt",
+	AutoSize = true,
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/dvd77700000/Free/main/FreeScript"))()
+  -- Theme Mode {"Defualt","Delete","Delete Fill"}
+})
+
+page:Button({
+	Title = "FPS BOOSTER made by strandedlukas",
+	Mode = "Defualt",
+	AutoSize = true,
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/strandedlukas/Fps-booster-/main/Fps%20booster"))();
+  -- Theme Mode {"Defualt","Delete","Delete Fill"}
+})
+
+-- Create a function to display the notification
+local function DisplayNotification(title, content)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = title,
+        Text = content,
+        Duration = 5
+    })
+end
+
+-- Execute the script
+DisplayNotification("Please Wait", "Give the GUI some time to load...")
